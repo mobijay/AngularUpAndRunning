@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+    <head><title>hello AngularJS</title></head>
+    <!-- The ng-controller directive tells AngularJS to instantiate an instance of the controller
+     with the given name and attach it to the DOM -->
+    <body ng-controller="MainCtrl">
+        Hello {{1 + 1}}nd time AngularJS
+
+        <!-- The controller is the business logic of the data that is shown on the View.
+        The first argument is the name of the controller. The second argument is an array of
+         dependencies for the controller as string variables. Dependencies in
+         the array are injected into the application. The last element of the array is the function and
+         definition and controller specific code of the controller. -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+        <script type="text/javascript">
+            angular.module('notesApp', []).controller('MainCtrl', [function() {
+                // Controller-specific code goes here
+                console.log("MainCtrl has been created");
+            }]);
+        </script>
+    </body>
+</html>

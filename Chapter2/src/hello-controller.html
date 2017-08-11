@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+    <head><title>Notes App</title></head>
+    <body ng-controller="MainCtrl as ctrl">
+
+            {{ ctrl.helloMsg }} AngularJS
+            <br>
+            {{ ctrl.goodbyeMsg }} AngularJS
+
+            <!-- Any variable defined on the controller instance with the 'this' keyword is
+            is accessible by the HTML. Any inner variables are not accessible. -->
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+            <script type="text/javascript">
+                angular.module('notesApp', []).controller('MainCtrl', [function() {
+                    this.helloMsg = 'Hello ';
+                    var goodbyeMsg = 'Goodbye ';
+                }]);
+            </script>
+    </body>
+</html>

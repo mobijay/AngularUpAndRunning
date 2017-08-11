@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Notes App</title>
+    </head>
+    <body ng-controller="MainCtrl as ctrl">
+
+        <!-- ng-repeat is a directive to iterate through a list -->
+        <!-- The double curlys {{}} and ng-bind directive do the same thing in that they
+         take the value from the controller and display it in the UI. However the difference lies in
+         the fact that AngularJS takes time to bootstrap and execute before it can find and replace all the double
+         curly brackets. -->
+        <div ng-repeat="note in ctrl.notes">
+            <span>{{note.label}}</span>
+            <span ng-bind="note.done"></span>
+        </div>
+
+        <br><br>
+
+        <!-- ng-cloak is a directive to hide sections of the page while AngularJS bootstraps and finishes loading.
+         This prevents flickering during loading.-->
+        <div ng-cloak>
+            <div ng-repeat="note in ctrl.notes">
+                <span>{{note.label}}</span>
+            </div>
+        </div>
+
+    </body>
+    <!-- Create an array of notes -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+    <script type="text/javascript">
+                    angular.module('notesApp', []).controller('MainCtrl', [function() {
+                        var self = this;
+                        self.notes = [
+                            {id: 1, label: 'First Note', done: false},
+                            {id: 2, label: 'Second Note', done: false},
+                            {id: 3, label: 'Done Note', done: true},
+                            {id: 4, label: 'Last Note', done: false}
+                        ];
+                    }]);
+         </script>
+</html>
+
+<!--
+    How this all works:
+
+    1. The HTML is loaded
+    2. After the entire document is loaded, AngularJS kicks in and looks for the ng-app directive
+    3. When it find the ng-app directive, it looks for and loads the module that is specified and attaches it to the element
+    4. AngularJS then traverses the children DOM elements of the root element with the ng-app and start looking for directives and bind statements
+    5. Each time it hits an ng-controller or an ng-repeat directive, it create a 'scope'. The scope dictates what each DOM element has access to in terms of functions, variable etc.
+    6. AngularJS then add watchers and listeners on the variables that the HTML accesses, and keeps track of the current value of each of them. When the value changes, AngularJS updates the UI immediately.
+
+-->

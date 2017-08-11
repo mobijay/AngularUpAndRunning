@@ -1,0 +1,20 @@
+<!-- Modules is Angulars way of packaging relevant code under a single name.
+This is equivalent to packages in Java.
+Modules can define its own controllers, services, factories and directives. These are functions and code that
+can be accessed throughout the module.
+The module can also depend on other modules as dependencies which are defined when the module is instantiated.
+In addition the module is also what AngularJS uses to bootstrap an application. This tells angularJS what module
+to load as the main entry point for the application by passing the module name into the ng-app directive.
+Modules take two arguments. The first argument is the name of the module. The second argument is an array of module names
+ that this module depends on. -->
+<html ng-app="notesApp">
+    <head><title>Hello AngularJS</title></head>
+    <body>
+        Hello {{1 + 1}}nd time AngularJS
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+    <script type ="text/javascript">
+        angular.module('notesApp', []);
+    </script>
+    </body>
+</html>
